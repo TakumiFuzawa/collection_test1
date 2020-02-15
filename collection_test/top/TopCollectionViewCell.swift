@@ -20,6 +20,11 @@ extension TopCollectionViewCellDelegate {
 class TopCollectionViewCell: BaseCollectionViewCell {
     weak var delegate: TopCollectionViewCellDelegate? = nil
     @IBOutlet var baseView: UIView!
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var iconImage: UIImageView!
+    @IBOutlet var lableName: UILabel!
+    @IBOutlet var lableOld: UILabel!
+    @IBOutlet var labelAdderss: UILabel!
     
 }
 
@@ -28,6 +33,7 @@ extension TopCollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         baseView.layer.borderWidth = 1
+        iconImage.layer.cornerRadius = iconImage.frame.width / 2
     }
 }
 

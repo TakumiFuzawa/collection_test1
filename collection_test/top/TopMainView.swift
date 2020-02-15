@@ -10,7 +10,7 @@ import UIKit
 import PGFramework
 
 protocol TopMainViewDelegate: NSObjectProtocol{
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
 }
 
 extension TopMainViewDelegate {
@@ -30,6 +30,8 @@ extension TopMainView {
         collectionView.delegate = self
         collectionView.dataSource = self
         loadCollectionViewCellFromXib(collectionView: collectionView, cellName: "TopCollectionViewCell")
+        
+        collectionViewFlowLayout.estimatedItemSize = CGSize(width: collectionView.frame.width / 2, height: 200)
     }
 }
 
@@ -44,6 +46,10 @@ extension TopMainView: UICollectionViewDelegate, UICollectionViewDataSource{
             return UICollectionViewCell()
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.collectionView(collectionView, didSelectItemAt: indexPath)
     }
     
     
